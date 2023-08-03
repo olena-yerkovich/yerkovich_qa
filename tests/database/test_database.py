@@ -45,7 +45,7 @@ def test_product_insert():
 def test_product_delete():
     db = Database()
     db.insert_product(99, 'тестові', 'дані', 999)
-    db.delete_product_by_id(99)
+    db.delete_product_by_id(7)
     qnt = db.select_product_qnt_by_id(99)
 
     assert len(qnt) == 0
@@ -63,4 +63,7 @@ def test_detailed_orders():
     assert orders [0][1] == 'Sergii'
     assert orders [0][2] == 'солодка вода'
     assert orders [0][3] == 'з цукром'
+
+
+
 
