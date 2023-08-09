@@ -1,5 +1,9 @@
 import pytest
 from modules.api.clients.github import GitHub
+from modules.common.database import Database
+from modules.ui.page_objects.sign_in_page_individual import SignInPage_ind
+from modules.ui.page_objects.sign_in_page_individual import BuyingProduct
+
 
 class User:
     
@@ -29,3 +33,24 @@ def github_api():
     api = GitHub()
 
     yield api
+
+
+@pytest.fixture
+def db():
+    db = Database()
+
+    yield db
+
+
+@pytest.fixture
+def product_test():
+    product_test = BuyingProduct()
+
+    yield product_test
+
+
+@pytest.fixture
+def pagetest():
+    pagetest = SignInPage_ind()
+
+    yield pagetest

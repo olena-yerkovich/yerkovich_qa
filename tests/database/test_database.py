@@ -3,20 +3,17 @@ from modules.common.database import Database
 
 
 @pytest.mark.database
-def test_database_connection():
-    db = Database()
+def test_database_connection(db):
     db.test_connection()
 
 @pytest.mark.database
-def test_check_all_users():
-    db = Database()
+def test_check_all_users(db):
     users = db.get_all_users()
 
     print(users)
 
 @pytest.mark.database
-def test_check_user_sergii():
-    db = Database()
+def test_check_user_sergii(db):
     user = db.get_user_address_by_name('Sergii')
 
     assert user[0][0] == 'Maydan Nezalezhnosti 1'
@@ -25,8 +22,7 @@ def test_check_user_sergii():
     assert user[0][3] == 'Ukraine'
 
 @pytest.mark.database
-def test_product_qnt_update():
-    db = Database()
+def test_product_qnt_update(db):
     db.update_product_qnt_by_id(1, 25)
     water_qnt = db.select_product_qnt_by_id(1)
 
@@ -34,16 +30,14 @@ def test_product_qnt_update():
 
 
 @pytest.mark.database
-def test_product_insert():
-    db = Database()
+def test_product_insert(db):
     db.insert_product(4, 'печиво', 'солодке', 30)
     water_qnt = db.select_product_qnt_by_id(4)
 
     assert water_qnt[0][0] == 30
 
 @pytest.mark.database
-def test_product_delete():
-    db = Database()
+def test_product_delete(db):
     db.insert_product(99, 'тестові', 'дані', 999)
     db.delete_product_by_id(7)
     qnt = db.select_product_qnt_by_id(99)
@@ -51,8 +45,7 @@ def test_product_delete():
     assert len(qnt) == 0
 
 @pytest.mark.database
-def test_detailed_orders():
-    db = Database()
+def test_detailed_orders(db):
     orders = db.get_detailed_orders()
     print("Замовлення", orders)
     #Check quantity of orders is equal to 1

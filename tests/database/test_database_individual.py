@@ -3,8 +3,7 @@ from modules.common.database import Database
 
 # Getting all users (those who have orders and those who don't)
 @pytest.mark.database_indi
-def test_all_users_lef_join():
-    db = Database()
+def test_all_users_lef_join(db):
     u = db.get_users_lef_join()
     print(u)
 
@@ -17,8 +16,7 @@ def test_all_users_lef_join():
 # Checking that database doesn't accept data with incorrect type (quantity should be int, not str). \
 # NOTE!This test should NOT be passed successfully. Syntax error is expected.
 @pytest.mark.database_indi
-def test_product_insert_incorrect_type():
-    db = Database()
+def test_product_insert_incorrect_type(db):
     db.insert_product( 17, 'печиво', 'солодке', '2 хлібини')
     water_qnt = db.select_product_qnt_by_id(17)
     
@@ -26,8 +24,7 @@ def test_product_insert_incorrect_type():
     
 # Getting all customers whose name starts with 'Serg'
 @pytest.mark.database_indi
-def test_get_all_like_customers():
-    db = Database()
+def test_get_all_like_customers(db):
     db.insert_customer(23, 'Sergiy', 'someaddress', 'somecity', 'somecode','somecountry')
     u = db.get_like_customers('Serg')
     print(u)
@@ -38,8 +35,7 @@ def test_get_all_like_customers():
 
 # Getting all customers with id in betweem 21 and 25
 @pytest.mark.database_indi
-def test_get_all_customers_by_between():
-     db = Database()
+def test_get_all_customers_by_between(db):
      u = db.get_customers_by_between(21, 25)
      print(u)
 
@@ -48,8 +44,7 @@ def test_get_all_customers_by_between():
 
 # Updating the products quantity and checking if database accepts correct data type
 @pytest.mark.database_indi
-def test_update_product_qnt():
-    db = Database()
+def test_update_product_qnt(db):
     db.update_product_qnt_by_id(2, 30)
     quantity = db.select_product_qnt_by_id(2)
     print(quantity)
@@ -59,8 +54,7 @@ def test_update_product_qnt():
 
 # Creation of the new record in database and testing it's data
 @pytest.mark.database_indi
-def test_customers_data():
-    db = Database()
+def test_customers_data(db):
     db.insert_customer(44, 'Olena','','','','')
     u = db.get_customers_by_id(44)
     print(u)
