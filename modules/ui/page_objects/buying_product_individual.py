@@ -18,11 +18,11 @@ class BuyingProduct(BasePage):
      def select_product(self, product):
          
         # Find the search field and click on it
-        search_button = self.driver.find_element(By.CLASS_NAME,"search-button")
+        search_button = self.driver.find_element(By.CLASS_NAME, "search-button")
         search_button.click()
 
         # Search the product
-        search_field = self.driver.find_element(By.ID,"search-input")
+        search_field = self.driver.find_element(By.ID, "search-input")
         search_field.send_keys(product)
         search_field.submit()
         
@@ -31,7 +31,7 @@ class BuyingProduct(BasePage):
         product.click()
         
         # Select variant (color)
-        color_dropdown = self.driver.find_element(By.CLASS_NAME,"product-variant-selected")
+        color_dropdown = self.driver.find_element(By.CLASS_NAME, "product-variant-selected")
         color_dropdown.click()
 
         color = self.driver.find_element(By.CSS_SELECTOR, color_locator)
@@ -42,7 +42,6 @@ class BuyingProduct(BasePage):
         buy_product.click()
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, buy_product_wait_element)))
         
-
     # Compare the products quantity in cart with expected products quantity
      def assert_compare_product_quantity(self, expected_quantity):
        product_quantity = self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div[1]/div[2]/div[1]/ul/li/div[2]/div[1]/div[1]/input").get_attribute("value")
@@ -51,13 +50,13 @@ class BuyingProduct(BasePage):
 
     # Compare the products color in cart with expected products color
      def assert_compare_product_color(self, expected_color):
-        product_color = self.driver.find_element(By.CLASS_NAME,"product__header-option").text
+        product_color = self.driver.find_element(By.CLASS_NAME, "product__header-option").text
 
         assert product_color == expected_color
    
     # Adding more products to cart
      def adding_product(self, n):
-       add_more_products_btn = self.driver.find_element(By.CLASS_NAME,"product__button-increase")
+       add_more_products_btn = self.driver.find_element(By.CLASS_NAME, "product__button-increase")
        
        for i in range(n):
           add_more_products_btn = self.driver.find_element(By.CLASS_NAME, "product__button-increase")
@@ -66,13 +65,13 @@ class BuyingProduct(BasePage):
  
     # Removing the added product from the cart
      def remove_product(self, n):
-       remove_product_btn = self.driver.find_element(By.CLASS_NAME,"product__button-decrease")
+       remove_product_btn = self.driver.find_element(By.CLASS_NAME, "product__button-decrease")
        remove_product_btn.click()
        WebDriverWait(self.driver, 10).until(EC.text_to_be_present_in_element_value((By.XPATH, "/html/body/div[1]/div[2]/div/div[1]/div[2]/div[1]/ul/li/div[2]/div[1]/div[1]/input"), n))
     
     # Deleting the product from the cart
      def delete_product(self):
-        delete_btn = self.driver.find_element(By.CLASS_NAME,"product__button-remove")
+        delete_btn = self.driver.find_element(By.CLASS_NAME, "product__button-remove")
         delete_btn.click()
         
 
