@@ -68,8 +68,7 @@ def test_checkout_order_name(product_test):
     actual_product_name = product_test.driver.find_element(By.CLASS_NAME,"product__header").text
 
     assert actual_product_name == product_name
-
-    
+  
 # Checkout the order and checking if the product variant is correct
 @pytest.mark.ui_indi
 def test_checkout_order_variant(product_test):
