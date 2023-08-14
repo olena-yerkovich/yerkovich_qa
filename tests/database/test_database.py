@@ -1,5 +1,4 @@
 import pytest
-from modules.common.database import Database
 
 
 @pytest.mark.database
@@ -28,7 +27,6 @@ def test_product_qnt_update(db):
 
     assert water_qnt [0][0] == 25
 
-
 @pytest.mark.database
 def test_product_insert(db):
     db.insert_product(4, 'печиво', 'солодке', 30)
@@ -39,7 +37,7 @@ def test_product_insert(db):
 @pytest.mark.database
 def test_product_delete(db):
     db.insert_product(99, 'тестові', 'дані', 999)
-    db.delete_product_by_id(7)
+    db.delete_product_by_id(99)
     qnt = db.select_product_qnt_by_id(99)
 
     assert len(qnt) == 0

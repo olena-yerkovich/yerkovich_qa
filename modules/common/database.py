@@ -17,12 +17,14 @@ class Database():
         query = "SELECT name, address, city FROM customers"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+        
         return record
     
     def get_user_address_by_name(self, name):
         query = f"SELECT address, city, postalCode, country FROM customers WHERE name = '{name}'"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+        
         return record
     
     def update_product_qnt_by_id(self, product_id, qnt):
@@ -34,6 +36,7 @@ class Database():
         query = f"SELECT quantity FROM products WHERE id = {product_id} "
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+        
         return record
     
     def insert_product(self, product_id, name, description, qnt):
@@ -55,6 +58,7 @@ class Database():
             JOIN products ON orders.product_id = products.id"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+        
         return record
 
     # Getting all users (those who have orders and those who don't)
@@ -65,6 +69,7 @@ class Database():
             ON customers.id = orders.customer_id"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+        
         return record
     
     def insert_customer(self, id, name, address, city, postalCode, country ):
@@ -73,23 +78,23 @@ class Database():
         self.cursor.execute(query)
         self.connection.commit()
     
-    
     def get_like_customers(self, username):
         query = f"SELECT * FROM customers WHERE name LIKE '{username}%'"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+        
         return record
-
 
     def get_customers_by_between(self, id_1, id_2):
         query =f"SELECT * FROM customers WHERE id BETWEEN {id_1} AND {id_2}"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+        
         return record
-    
     
     def get_customers_by_id(self, customer_id):
         query = f"SELECT * FROM customers WHERE id = {customer_id} "
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+        
         return record

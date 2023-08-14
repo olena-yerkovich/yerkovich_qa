@@ -1,17 +1,16 @@
 import pytest
-from modules.common.database import Database
+
 
 # Getting all users (those who have orders and those who don't)
 @pytest.mark.database_indi
 def test_all_users_lef_join(db):
-    u = db.get_users_lef_join()
-    print(u)
+    users = db.get_users_lef_join()
+    print(users)
 
-    assert u[0][0] != 2
-    assert u[1][0] == 2
-    assert 'Sergii' in u[0][1] 
-    assert 'stepan' not in u[1][1]
-
+    assert users[0][0] != 2
+    assert users[1][0] == 2
+    assert 'Sergii' in users[0][1] 
+    assert 'stepan' not in users[1][1]
 
 # Checking that database doesn't accept data with incorrect type (quantity should be int, not str). \
 # NOTE!This test should NOT be passed successfully. Syntax error is expected.
@@ -26,21 +25,21 @@ def test_product_insert_incorrect_type(db):
 @pytest.mark.database_indi
 def test_get_all_like_customers(db):
     db.insert_customer(23, 'Sergiy', 'someaddress', 'somecity', 'somecode','somecountry')
-    u = db.get_like_customers('Serg')
-    print(u)
+    customers = db.get_like_customers('Serg')
+    print(customers)
 
-    assert 'Serg' in u[0][1]
-    assert 'Serg' in u[1][1]
-    assert 'Serg' in u[2][1]
+    assert 'Serg' in customers[0][1]
+    assert 'Serg' in customers[1][1]
+    assert 'Serg' in customers[2][1]
 
 # Getting all customers with id in betweem 21 and 25
 @pytest.mark.database_indi
 def test_get_all_customers_by_between(db):
-     u = db.get_customers_by_between(21, 25)
-     print(u)
+     customers = db.get_customers_by_between(21, 25)
+     print(customers)
 
-     assert u[0][0] in range (21, 25)
-     assert u[1][0] in range (21, 25)
+     assert customers[0][0] in range (21, 25)
+     assert customers[1][0] in range (21, 25)
 
 # Updating the products quantity and checking if database accepts correct data type
 @pytest.mark.database_indi
@@ -56,12 +55,12 @@ def test_update_product_qnt(db):
 @pytest.mark.database_indi
 def test_customers_data(db):
     db.insert_customer(44, 'Olena','','','','')
-    u = db.get_customers_by_id(44)
-    print(u)
+    customer = db.get_customers_by_id(44)
+    print(customer)
 
-    assert len(u) != 0
-    assert len(u) == 1
-    assert u[0][2] == ''
-    assert u[0][2] != None
+    assert len(customer) != 0
+    assert len(customer) == 1
+    assert customer[0][2] == ''
+    assert customer[0][2] != None
 
 

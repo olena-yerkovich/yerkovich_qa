@@ -6,8 +6,13 @@ class BasePage:
     PATH = r"C:\Users\Lenovo\yerkovich_qa"
     DRIVER_NAME = "\chromedriver.exe"
 
-    def __init__(self) -> None:
-        self.driver = webdriver.Chrome(
+    def __init__(self, driver=None):
+        
+        if driver  is not None:
+            self.driver = driver
+        
+        else:
+            self.driver = webdriver.Chrome(
             service=Service(BasePage.PATH + BasePage.DRIVER_NAME)
             )
     

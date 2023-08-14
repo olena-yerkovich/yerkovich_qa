@@ -15,7 +15,6 @@ class GitHub:
 
       return body
    
-
    def get_list_commits(self, owner,repo):
       r = requests.get(f'https://api.github.com/repos/{owner}/{repo}/commits')
       body = r.json()
