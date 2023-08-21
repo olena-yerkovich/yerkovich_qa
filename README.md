@@ -11,7 +11,7 @@ This framework consists of the 3 main folders:
 
 ## Config
 
-The __config__ folder contains the ___config.py___ file that we can use to set some configurations. Currently, it's empty.
+The __config__ folder contains the ___config.py___ file that we can use to set some configurations. 
 
 ## Modules
 The __modules__ folder contains files with methods that are used in auto tests:
