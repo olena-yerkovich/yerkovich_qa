@@ -1,9 +1,11 @@
 import pytest
 
+
 existing_username = 'defunkt'
 not_existing_username = 'butenkosergii'
 existing_repo = 'become-qa-auto'
 not_existing_repo = 'sergiibutenko_repo_non_exist123'
+
 
 @pytest.mark.api
 def test_user_exists(github_api):

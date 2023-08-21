@@ -2,14 +2,17 @@ import pytest
 import requests
 
 
+base_url = "https://api.github.com"
+
+
 @pytest.mark.http
 def test_first_request():
-    r = requests.get('https://api.github.com/zen')
+    r = requests.get(base_url + '/zen')
     print(f"Response is {r.text}")
 
 @pytest.mark.http
 def test_second_request():
-    r = requests.get('https://api.github.com/users/defunkt')
+    r = requests.get(base_url + '/users/defunkt')
     body =  r.json()
     headers = r.headers
 
@@ -19,7 +22,7 @@ def test_second_request():
 
 @pytest.mark.http
 def test_status_code_request():
-    r = requests.get('https://api.github.com/users/sergii_butenko')
+    r = requests.get(base_url + '/users/sergii_butenko')
 
     assert r.status_code == 404
     
