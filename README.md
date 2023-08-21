@@ -44,20 +44,20 @@ The __tests__ folder contains files with API, database, and UI auto tests:
 3. ui
 ```  
 The __api__ contains:
-   - __test_api.py__ - first API tests (from lectures)
-   - __test_fixtures.py__ - first API tests using fixtures (from lectures)
-   - __test_github_api.py__ - GitHub API tests (from lectures)
+   - __test_api.py__ - first API tests 
+   - __test_fixtures.py__ - first API tests using fixtures 
+   - __test_github_api.py__ - GitHub API tests 
    - __test_github_api_individual.py__ - GitHub API tests (created by me)
-   - __test_http.py__ - first http requests tests (from lectures)
+   - __test_http.py__ - first http requests tests 
 
 The __database__ contains:
-   - __test_database.py__ - database tests (from lectures)
+   - __test_database.py__ - database tests 
    - __test_database_individual.py__ - database tests (created by me)
 
 The __ui__ contains:
-   - __test_ui.py__ - first UI tests (from lectures)
+   - __test_ui.py__ - first UI tests 
    - __test_ui_individual.py__ - UI tests (created by me)
-   - __test_ui_page_object.py__ - UI tests using page object model (from lectures)
+   - __test_ui_page_object.py__ - UI tests using page object model 
 ___
 There are 4 files that are also very important: 
 1. __become_qa_auto.db__ - the database for testing 
